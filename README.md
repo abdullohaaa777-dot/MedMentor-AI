@@ -1,23 +1,26 @@
-# MedMentor AI — Claude API Telegram bot
+# MedMentor AI — Claude Telegram bot
 
-Bu repository MedMentor AI botining **maxfiy** kod bazasi uchun yaratilgan.
+**Status:** Minimal Claude Telegram bot kodi GitHub'ga joylangan. Haqiqiy Claude/Telegram API bilan sinov hali o'tkazilmagan.
+
+## Hozir mavjud
+- Claude bilan tibbiy savol-javob
+- JPEG/PNG rasm tahlili
+- 5 tushuntirish uslubi va Telegram HTML
+- FastAPI /health endpoint
+
+**Hali mavjud emas:** o'qituvchi testlarini yuklash, virtual bemor, obuna, audio/video transkripsiya, ovozli javob va to'liq interaktiv Mini App.
+
+## Windowsda o'rnatish
+1. Repositoryni ZIP qilib yuklab, arxivdan chiqaring.
+2. Python 3.13 bilan setup_windows.bat ni ishga tushiring.
+3. Lokal .env faylga YANGI BOT_TOKEN va ANTHROPIC_API_KEY kiriting.
+4. AI_MODEL qiymatini Anthropic hisobingizda mavjud model ID siga sozlang.
+5. run_bot.bat ni faqat bir marta ishga tushiring.
+6. Telegramda /start, matn va rasm bilan sinang.
 
 ## Xavfsizlik
-- **BOT_TOKEN** va **ANTHROPIC_API_KEY** ni GitHub'ga joylamang.
-- Maxfiy qiymatlar uchun lokal `.env` yoki hosting secrets'dan foydalaning.
-- `.gitignore` ushbu fayllarni Git tarixiga tushishdan saqlaydi (ilgari commit qilingan kalitlarni himoya qilmaydi).
+Ilgari .env tasodifan commit qilingan. U hozirgi main tarmog'idan o'chirilgan, biroq eski Git tarixida qolishi mumkin. Oldingi bot tokeni va Claude API kalitini bekor qilib yangilang. Sirlarni GitHub'ga yuklamang.
 
-## Loyihani yuklash
-Claude versiyasi ZIP arxividan **faqat dastur fayllarini** repositoryga yuklang.
-`.env`, `.venv`, `data/`, `__pycache__/` va shaxsiy ma'lumotlarni yuklamang.
+GitHub Actions testlari haqiqiy Telegram/Claude API ishlashini tasdiqlamaydi. 24/7 ishlash uchun hosting kerak.
 
-## Ishga tushirish (Windows)
-1. Python 3.13 ni o'rnating.
-2. `setup_windows.bat` ni ishga tushiring.
-3. `.env.example` dan `.env` yarating va o'zingizning tokenlaringizni kiriting.
-4. `run_bot.bat` ni ishga tushiring.
-
-> GitHub'ga kod yuklanishi botni avtomatik 24/7 ishga tushirmaydi. Buning uchun hosting kerak.
-> Claude API modelining mavjudligi va billing holatini Anthropic Console'da tekshiring.
-
-**Status:** Dastlabki xavfsiz repository sozlamalari kiritilgan; botning to'liq manba kodi hali yuklanmagan.
+Docker bot: docker compose up --build -d bot
