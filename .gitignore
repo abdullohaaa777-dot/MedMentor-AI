@@ -1,14 +1,10 @@
 .env
-.env.*
-!.env.example
 .venv/
 __pycache__/
 .pytest_cache/
-*.py[cod]
+*.pyc
 data/
 *.db
 *.sqlite3
 *.log
 *.zip
-.idea/
-.vscode/

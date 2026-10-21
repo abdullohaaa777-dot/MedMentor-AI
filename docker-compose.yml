@@ -1,0 +1,15 @@
+services:
+  bot:
+    build: .
+    env_file: .env
+    restart: unless-stopped
+    volumes: ["./data:/app/data"]
+    command: ["python", "-m", "medmentor.bot"]
+  web:
+    build: .
+    env_file: .env
+    restart: unless-stopped
+    volumes: ["./data:/app/data"]
+    command: ["uvicorn", "medmentor.web:app", "--host", "0.0.0.0", "--port", "8080"]
+    ports: ["127.0.0.1:8080:8080"]
+# HTTPS proxy (Caddy/nginx) va domenni alohida sozlang.
