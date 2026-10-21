@@ -45,7 +45,13 @@ async def main():
     except RateLimitError:
         print("CLAUDE: 429 — balans/limit/rate limit muammosi.")
     except APIStatusError as exc:
-        print("CLAUDE: HTTP " + str(exc.status_code) + " — Anthropic Console sozlamalarini tekshiring.")
+        print("CLAUDE: HTTP " + str(exc.status_code))
+        try:
+            err = exc.response.json().get("error", {})
+            print("Xato turi:", err.get("type", "unknown"))
+            print("Sabab:", str(err.get("message", "Unknown API error"))[:700])
+        except Exception:
+            print("Xatolik tafsilotlarini o‘qib bo‘lmadi.")
     except Exception as exc:
         print("CLAUDE: " + type(exc).__name__ + " — internet/tarmoqni tekshiring.")
     finally:
