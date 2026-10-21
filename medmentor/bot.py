@@ -259,18 +259,18 @@ async def on_text(message: Message):
         ok = choice == q["answer"]
         quiz["score"] += int(ok)
         quiz["index"] += 1
-        await message.answer(("✅ To'g'ri!" if ok else "❌ Noto'g'ri.") + "\\n" + escape(q["explanation"]))
+        await message.answer(("✅ To'g'ri!" if ok else "❌ Noto'g'ri.") + "\n" + escape(q["explanation"]))
         await present_quiz(message, uid)
         return
     if uid in user_cases:
-        await generate_reply(message, "Quyidagi klinik vaziyatda talabaga diagnostik fikrlash bo'yicha xolis fikr bildiring, xavfli tavsiyalar bermang.\\nVaziyat: " + user_cases[uid] + "\\nTalaba javobi: " + message.text)
+        await generate_reply(message, "Quyidagi klinik vaziyatda talabaga diagnostik fikrlash bo'yicha xolis fikr bildiring, xavfli tavsiyalar bermang.\nVaziyat: " + user_cases[uid] + "\nTalaba javobi: " + message.text)
         return
     await generate_reply(message, message.text)
 
 
 @dp.message()
 async def other(message: Message):
-    await message.answer("Hozir ushbu versiyada matn va rasm qabul qilinadi. Audio, video va hujjat modullari hali ulanmagan.")
+    await message.answer("Matn, rasm, PDF/DOCX/TXT va /quiz hamda /case ishlatiladi. Audio va video funksiyalari hali qo‘shilmagan.")
 
 
 async def main():
